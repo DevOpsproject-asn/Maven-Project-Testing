@@ -32,7 +32,7 @@ stages{
   }
   stage('Build Docker Image') {
             steps {
-                sh "docker build -t 952149495092.dkr.ecr.ap-south-1.amazonaws.com/maventestproject ."
+                sh "sudo docker build -t 952149495092.dkr.ecr.ap-south-1.amazonaws.com/maventestproject ."
             }
         }
 }
