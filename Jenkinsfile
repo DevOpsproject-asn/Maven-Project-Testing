@@ -43,9 +43,9 @@ pipeline {
 
         stage('Push Docker Image to ECR') {
             steps {
-                withCredentials([string(credentialsId: 'AWS_ECR_CREDENTIALS', variable: 'AWS_CREDS')]) {
+                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'AWS_Cred']]) {
                     sh '''
-                        export ${AWS_CREDS}
+                        export ${AWS_Cred}
                         aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
                         docker push $ECR_REPO
                     '''
