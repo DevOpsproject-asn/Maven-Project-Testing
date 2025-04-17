@@ -52,5 +52,10 @@ pipeline {
                 }
             }
         }
+        stage('Deploy to K8s cluster') {
+           steps {
+              sh "kubectl apply -f MavenWebApplication.yaml"
+           }
+        }
     }
 }
